@@ -7,12 +7,13 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
+import { FULL_NAME } from './data'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Caelin Bryant',
-    template: '%s | Caelin Bryant',
+    default: FULL_NAME,
+    template: '%s | ' + FULL_NAME,
   },
   description: 'This is my portfolio.',
   openGraph: {

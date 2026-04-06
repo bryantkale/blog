@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import { MagneticSocialLink } from "app/components/MagneticSocialLink"
-import { EMAIL, SOCIAL_LINKS } from "app/data"
+import { MagneticSocialLink } from "app/components/MagneticSocialLink/MagneticSocialLink"
+import { EMAIL, FULL_NAME, SOCIAL_LINKS } from "app/data"
 import { motion } from "motion/react"
 import here from 'public/images/here.gif'
 // export const metadata = {
@@ -24,7 +24,7 @@ export default function About() {
             <section>
                 <h1 className="mb-8 text-2xl font-semibold tracking-tighter">Who Am I?</h1>
                 <p className="mb-4">
-                    {`Hey there! I’m Caelin Bryant — a light-hearted ambivert who enjoys making life easier with code.`}
+                    {`Hey there! I’m ${FULL_NAME} — a light-hearted ambivert who enjoys making life easier with code.`}
                 </p>
                 <p className="mb-4">
                     {`My first exposure to programming was watching my older cousin write Java at his job. It looked like the kind of nonsense code you see in The Matrix and made me wonder: could I learn to write code that actually made sense?`}
