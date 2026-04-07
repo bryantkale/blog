@@ -8,7 +8,7 @@ import {
   MorphingDialogClose,
   MorphingDialogImage,
   MorphingDialogContainer,
-} from 'components/motion-primitives/morphing-dialog.tsx';
+} from 'components/motion-primitives/morphing-dialog';
 import {
   Carousel,
   CarouselContent,
@@ -16,10 +16,8 @@ import {
   CarouselIndicator,
   CarouselItem,
 } from 'components/motion-primitives/carousel';
-// export const metadata = {
-//   title: 'Artwork',
-//   description: 'My Artwork.',
-// }
+
+// import Left from 'public/Left.png';
 
 const artworkItems = [{
   mainTitle: 'Paper Art',
@@ -103,8 +101,10 @@ const artworkItems = [{
 
 export default function Artwork() {
   return (
-    <div>
-      <h1 className="flex mb-8 text-2xl font-semibold tracking-tighter">My Art Work</h1>
+    <div style={{ padding: 'auto' }}>
+      {/* <button><img src={Left.src} /></button>
+      <button><img style={{ transform: 'scaleX(-1)' }} src={Left.src} /></button> */}
+      <h1 className="flex mb-8 text-2xl font-semibold">My Art Work</h1>
       {artworkItems.map((item, index) => (
         <div key={index}>
           <div>{item.mainTitle}</div>
@@ -160,7 +160,7 @@ export default function Artwork() {
                   </MorphingDialog>
                 ))}
               </CarouselContent>
-              <CarouselNavigation alwaysShow />
+              <CarouselNavigation classNameButton='mx-auto' alwaysShow />
               <CarouselIndicator />
             </Carousel>
           </motion.div>

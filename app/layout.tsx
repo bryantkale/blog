@@ -7,7 +7,9 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
-import { FULL_NAME } from './data'
+import { FULL_NAME } from './data';
+// Tutorial for black lace border: https://solaria.neocities.org/guides/borderimage/
+import blacklace from 'public/blacklacelarge.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -48,10 +50,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
+        // 'text-black bg-white dark:text-white dark:bg-black',
         GeistSans.variable,
         GeistMono.variable
       )}
+      style={{ color: '#331B1C', border: '20px solid transparent', borderImage: `url(${blacklace.src}) 30 round`, backgroundColor: '#FFE9E9' }}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">

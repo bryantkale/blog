@@ -1,3 +1,5 @@
+'use client'
+import { AnimatedBackground } from '@/components/motion-primitives/animated-background'
 import Link from 'next/link'
 
 const navItems = {
@@ -26,18 +28,30 @@ export function Navbar() {
           className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
           id="nav"
         >
-          <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
-                  {name}
-                </Link>
-              )
-            })}
+          <div className="flex flex-row">
+            <AnimatedBackground
+              defaultValue={navItems['/'].name}
+              className='rounded-lg bg-zinc-100 dark:bg-zinc-800'
+              transition={{
+                bounce: 0.2,
+                duration: 0.3,
+              }}
+              enableHover
+            >
+              {Object.entries(navItems).map(([path, { name }]) => {
+                return (
+                  <Link
+                    style={{ color: '#331B1C' }}
+                    key={path}
+                    href={path}
+                    data-id={path}
+                    className="px-2 py-0.5 text-zinc-600 transition-colors duration-300 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50"
+                  >
+                    {name}
+                  </Link>
+                )
+              })}
+            </AnimatedBackground>
           </div>
         </nav>
       </div>
