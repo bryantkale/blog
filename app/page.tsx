@@ -1,4 +1,3 @@
-import react from 'React';
 import { BlogPosts } from 'app/components/posts'
 import Image from 'next/image';
 import image from 'public/Component6.png'
