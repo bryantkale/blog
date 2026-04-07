@@ -1,10 +1,9 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import { MagneticSocialLink } from "app/components/MagneticSocialLink/MagneticSocialLink"
-import { EMAIL, FULL_NAME, SOCIAL_LINKS } from "app/data"
 import { motion } from "motion/react"
-import here from 'public/images/here.gif'
+import { EMAIL, FULL_NAME, SOCIAL_LINKS } from '../data'
+import { MagneticSocialLink } from '../components/MagneticSocialLink/MagneticSocialLink'
 // export const metadata = {
 //     title: 'About',
 //     description: 'About Me.',
@@ -16,7 +15,7 @@ export default function About() {
             animate="visible"
         >
             <Image
-                src={here}
+                src={'/images/here.gif'}
                 width={500}
                 height={500}
                 alt="Gif of the author"

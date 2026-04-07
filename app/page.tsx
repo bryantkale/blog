@@ -1,15 +1,11 @@
-import { BlogPosts } from 'app/components/posts'
 import Image from 'next/image';
-import image from 'public/Component6.png'
+import { BlogPosts } from './components/posts';
 
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        This is my blog!
-      </h1>
       <Image
-        src={image}
+        src={"/Component 5.png"}
         width={500}
         height={500}
         alt="An image with blue, yellow, and grey flowers and caelin bryant in the middle" />

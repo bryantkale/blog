@@ -1,23 +1,8 @@
 
 'use client';
+import { Carousel, CarouselContent, CarouselIndicator, CarouselItem, CarouselNavigation } from "@/components/motion-primitives/carousel";
+import { MorphingDialog, MorphingDialogClose, MorphingDialogContainer, MorphingDialogContent, MorphingDialogImage, MorphingDialogTrigger } from "@/components/motion-primitives/morphing-dialog";
 import { motion } from "motion/react";
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogClose,
-  MorphingDialogImage,
-  MorphingDialogContainer,
-} from 'components/motion-primitives/morphing-dialog';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselNavigation,
-  CarouselIndicator,
-  CarouselItem,
-} from 'components/motion-primitives/carousel';
-
-// import Left from 'public/Left.png';
 
 const artworkItems = [{
   mainTitle: 'Paper Art',
@@ -102,8 +87,6 @@ const artworkItems = [{
 export default function Artwork() {
   return (
     <div style={{ padding: 'auto' }}>
-      {/* <button><img src={Left.src} /></button>
-      <button><img style={{ transform: 'scaleX(-1)' }} src={Left.src} /></button> */}
       <h1 className="flex mb-8 text-2xl font-semibold">My Art Work</h1>
       {artworkItems.map((item, index) => (
         <div key={index}>
@@ -160,7 +143,7 @@ export default function Artwork() {
                   </MorphingDialog>
                 ))}
               </CarouselContent>
-              <CarouselNavigation classNameButton='mx-auto' alwaysShow />
+              <CarouselNavigation alwaysShow></CarouselNavigation>
               <CarouselIndicator />
             </Carousel>
           </motion.div>

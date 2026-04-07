@@ -1,4 +1,4 @@
-import { Magnetic } from "components/motion-primitives/magnetic";
+import { Magnetic } from "@/components/motion-primitives/magnetic";
 import React from "react";
 
 export function MagneticSocialLink({

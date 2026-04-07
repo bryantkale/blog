@@ -1,5 +1,5 @@
 'use client';
-import PDFViewer from 'app/components/PDFViewer/PDFViewer';
+import PDFViewer from '../components/PDFViewer/PDFViewer';
 export default function TechExperience() {
     return <PDFViewer />;
 }
