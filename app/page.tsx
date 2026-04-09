@@ -6,8 +6,8 @@ export default function Page() {
     <section>
       <Image
         src={"/Component 5.png"}
-        width={500}
-        height={500}
+        width={1000}
+        height={1000}
         alt="An image with blue, yellow, and grey flowers and caelin bryant in the middle" />
       <div className="my-8">
         <h2 className="text-xl font-bold mb-4">Sometimes I'll post my opinion</h2>

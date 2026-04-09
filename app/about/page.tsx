@@ -4,16 +4,10 @@ import Image from 'next/image'
 import { motion } from "motion/react"
 import { EMAIL, FULL_NAME, SOCIAL_LINKS } from '../data'
 import { MagneticSocialLink } from '../components/MagneticSocialLink/MagneticSocialLink'
-// export const metadata = {
-//     title: 'About',
-//     description: 'About Me.',
-// }
 
 export default function About() {
     return (
-        <motion.main
-            animate="visible"
-        >
+        <motion.main animate="visible">
             <Image
                 src={'/images/here.gif'}
                 width={500}

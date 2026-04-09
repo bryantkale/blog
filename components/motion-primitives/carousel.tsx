@@ -146,7 +146,7 @@ function CarouselNavigation({
             : 'group-hover/hover:disabled:opacity-40',
           classNameButton
         )}
-        disabled={index === 0}
+        // disabled={index === 0}
         onClick={() => {
           if (index > 0) {
             setIndex(index - 1);
@@ -291,9 +291,9 @@ function CarouselContent({
         disableDrag
           ? undefined
           : {
-              left: 0,
-              right: 0,
-            }
+            left: 0,
+            right: 0,
+          }
       }
       dragMomentum={disableDrag ? undefined : false}
       style={{
