@@ -8,6 +8,7 @@ export default function Page() {
         src={"/Component 5.png"}
         width={1000}
         height={1000}
+        loading='eager'
         alt="An image with blue, yellow, and grey flowers and caelin bryant in the middle" />
       <div className="my-8">
         <h2 className="text-xl font-bold mb-4">Sometimes I'll post my opinion</h2>

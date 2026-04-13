@@ -13,6 +13,7 @@ export default function About() {
                 width={500}
                 height={500}
                 alt="Gif of the author"
+                unoptimized
             />
             <section>
                 <h1 className="mb-8 text-2xl font-semibold tracking-tighter">Who Am I?</h1>
