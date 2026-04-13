@@ -3,7 +3,8 @@ import { MorphingDialog, MorphingDialogClose, MorphingDialogContainer, MorphingD
 
 export default function ImageCarousel({ item }) {
     return (
-        <div style={{ border: '80px solid transparent', borderImage: "url(/frame.png) 18% round" }}>
+        <div>
+            {/* // style={{ border: '80px solid transparent', borderImage: "url(/frame.png) 18% round" }}> */}
             <Carousel className="m-6">
                 <CarouselContent>
                     {item.images.map((image, idx) => (
