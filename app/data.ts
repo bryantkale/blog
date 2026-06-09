@@ -1,6 +1,19 @@
 type SocialLink = {
-    label: string
-    url: string
+    label: string;
+    url: string;
+};
+
+type ArtworkImage = {
+    title: string;
+    description: string;
+    imageUrl: string;
+}
+
+type Artwork = {
+    mainTitle: string;
+    year: string;
+    description: string;
+    images: ArtworkImage[];
 };
 
 export const EMAIL = 'caelinbryant@gmail.com';
@@ -25,7 +38,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
     }
 ];
 
-export const artworkItems = [{
+export const artworkItems: Artwork[] = [{
+    mainTitle: "Poop",
+    year: 'unknown',
+    description: 'unknown',
+    images: [
+        { title: 'Poopie', description: 'blah blah', imageUrl: '/images/newer1.jpg' },
+        { title: 'Poopie', description: 'blah blah', imageUrl: '/images/newer2.jpg' }]
+}, {
     mainTitle: 'Paper Art',
     year: '2016',
     description: 'My overall thought process when creating my floating figure was to create something similar to Henry Moore’s sculpture called “Reclining Figure” of an organically shaped woman reclining. I really appreciate his art and it was one of the first things I thought about when deciding what I wanted to create for this project. I wanted to combine both women and something that could possibly intimidate my audience because of its height.',
