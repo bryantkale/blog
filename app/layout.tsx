@@ -4,13 +4,11 @@ import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
-import { baseUrl } from './sitemap'
 import { FULL_NAME } from './data';
 import { GeistPixelSquare } from 'geist/font/pixel';
 // Tutorial for black lace border: https://solaria.neocities.org/guides/borderimage/
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
   title: {
     default: FULL_NAME,
     template: '%s | ' + FULL_NAME,
@@ -19,7 +17,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'My Portfolio',
     description: 'This is my portfolio.',
-    url: baseUrl,
     siteName: 'My Portfolio',
     locale: 'en_US',
     type: 'website',

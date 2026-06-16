@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { BlogPosts } from './components/posts';
 
 export default function Page() {
   return (
@@ -10,7 +9,6 @@ export default function Page() {
         height={1000}
         loading='eager'
         alt="An image with blue, yellow, and grey flowers and caelin bryant in the middle" />
-
     </section>
   )
 }

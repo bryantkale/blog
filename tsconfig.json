@@ -36,8 +36,9 @@
     ".next/types/**/*.ts",
     "next.config.mjs",
     ".next/dev/types/**/*.ts",
-    "app/blog/utils.js",
-    "app/components/PDFViewer/PDFViewer.js"
+    "app/vinyl/utils.js",
+    "app/components/PDFViewer/PDFViewer.js",
+    "fetchAlbums.js"
   ],
   "exclude": [
     "node_modules"
