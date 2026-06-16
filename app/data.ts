@@ -28,83 +28,108 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 // Images are loaded from the public album-art Supabase bucket via folder or bucketPath.
-export const artworkItems: Artwork[] = [{
-    mainTitle: "Poop",
-    year: 'unknown',
-    description: 'unknown',
-    folder: 'newer',
-    images: [
-        { title: 'Poopie', description: 'blah blah' },
-        { title: 'Poopie', description: 'blah blah' }]
-}, {
-    mainTitle: 'Paper Art',
-    year: '2016',
-    description: 'My overall thought process when creating my floating figure was to create something similar to Henry Moore’s sculpture called “Reclining Figure” of an organically shaped woman reclining. I really appreciate his art and it was one of the first things I thought about when deciding what I wanted to create for this project. I wanted to combine both women and something that could possibly intimidate my audience because of its height.',
-    folder: 'paper-art',
-    images: [{
-        title: 'Paper 1',
-        description: 'Description of Paper 1',
+export const artworkItems: Artwork[] = [
+    {
+        mainTitle: "Sketches from old black book no.1",
+        year: '2020-2021',
+        description: 'Here are some pieces from my sketchbook. I plan on working them into something bigger, ' +
+            'but for now, I want to display them here.',
+        folder: 'newer',
+        images: []
     },
     {
-        title: 'Paper 2',
-        description: 'Description of Paper 2',
+        mainTitle: "Vivero Project",
+        year: "2017",
+        description: "This covers some of the work I did for Vivero Swag.",
+        folder: "vivero",
+        images: []
     },
     {
-        title: 'Paper 3',
-        description: 'Description of Paper 3',
+        mainTitle: "Welding Project",
+        year: "2016",
+        description: "",
+        folder: "welding",
+        images: []
     },
     {
-        title: 'Paper 4',
-        description: 'Description of Paper 4',
-    },]
-},
-{
-    mainTitle: 'Return',
-    year: '2017',
-    description: 'For this assignment, we were supposed to compose our own narrative stories using material and inspiration from CERA. One of the ideas that first came to my head was to draw using the different types of mud that I found while roaming the prairie of CERA. I wanted to use dirt because I wanted to work with this idea of everything, including my drawing, returning back to soil from whence it first came. In using dirt, I realized that I could use it in the same way that we used ink at the beginning of the semester. The idea to use mud to draw a deer carcass came from me stumbling upon an actual dead deer carcass near the stream that was located in CERA. I thought that the beauty of this sight was something that I really wanted to capture onto paper before it finally decomposed and nothing was left of it. By using the dirt, clay and the pictures that I took of and near the deer carcass, I decided to tell a story using its bones and the grass that slowly began to cover them.',
-    folder: 'return',
-    images: [{
-        title: 'Paper 1',
-        description: 'Description of Paper 1',
+        mainTitle: "Wood Project",
+        year: "2016",
+        description: "Close your eyes and feel the bumps and curves of a tree. It flow is organic and nothing repeats in" +
+            " the same way. I wanted to depict that feeling with multiple pieces of wood stack and sanded.",
+        folder: "wood",
+        images: []
     },
     {
-        title: 'Paper 2',
-        description: 'Description of Paper 2',
-    },
-    {
-        title: 'Paper 3',
-        description: 'Description of Paper 3',
-    },
-    {
-        title: 'Paper 4',
-        description: 'Description of Paper 4',
-    },
-    {
-        title: 'Paper 5',
-        description: 'Description of Paper 5',
-    }]
-},
-{
-    mainTitle: 'Charcoal Drawing',
-    year: '2017',
-    description: 'With this assignment, we were told that through our drawings, we were supposed create a conversation with an artist of our choosing. The artist that I chose was Jenny Saville because of the vast charcoal drawings that she does. Specifically, I wanted to focus on the pictures that she draws of mothers and their children. With these drawings, Saville focusing on trying to portray the movements of both the mother and the children because the child will not stay still for the portrait. In trying to have a conversation with Saville, I wanted to try to recreate this exact scene, but instead of a mother and their child, I wanted to draw my girlfriend and her cat. In some sense, cats are similar to toddlers because they struggle when they are being held and move in strange ways. In the past, I have struggled with going outside of my comfort zone with the art that I create because of the anxiety that I feel when creating something new. Because I love figure drawing, I had the most fun drawing the human figure and finding the lines and shapes of the body.',
-    folder: 'charcoal',
-    images: [
-        {
-            title: 'Charcoal 1',
-            description: 'Description of Charcoal 1',
+        mainTitle: 'Paper Art',
+        year: '2016',
+        description: 'Inspired by Henry Moore’s, “Reclining Figure”, I wanted to intimidate the audience with ' +
+            'height and ethereal flow as wind moves through the the piece.',
+        folder: 'paper-art',
+        images: [{
+            title: 'Paper 1',
+            description: 'Description of Paper 1',
         },
         {
-            title: 'Charcoal 2',
-            description: 'Description of Charcoal 2',
+            title: 'Paper 2',
+            description: 'Description of Paper 2',
         },
         {
-            title: 'Charcoal 3',
-            description: 'Description of Charcoal 3',
+            title: 'Paper 3',
+            description: 'Description of Paper 3',
         },
         {
-            title: 'Charcoal 4',
-            description: 'Description of Charcoal 4',
-        }
-    ]
-}];
+            title: 'Paper 4',
+            description: 'Description of Paper 4',
+        },]
+    },
+    {
+        mainTitle: 'Return',
+        year: '2017',
+        description: 'Inspired by found materials from CERA (Conard Environmental Research Area), we focus on life after death.',
+        folder: 'return',
+        images: [{
+            title: 'Paper 1',
+            description: 'Description of Paper 1',
+        },
+        {
+            title: 'Paper 2',
+            description: 'Description of Paper 2',
+        },
+        {
+            title: 'Paper 3',
+            description: 'Description of Paper 3',
+        },
+        {
+            title: 'Paper 4',
+            description: 'Description of Paper 4',
+        },
+        {
+            title: 'Paper 5',
+            description: 'Description of Paper 5',
+        }]
+    },
+    {
+        mainTitle: 'Charcoal Drawing',
+        year: '2017',
+        description: 'Inspired by Jenny Saville\s, "Other and Children (After the Leonardo Cartoon)" , we focus on capturing the motion' +
+            'of a cat being held.',
+        folder: 'charcoal',
+        images: [
+            {
+                title: 'Charcoal 1',
+                description: 'Description of Charcoal 1',
+            },
+            {
+                title: 'Charcoal 2',
+                description: 'Description of Charcoal 2',
+            },
+            {
+                title: 'Charcoal 3',
+                description: 'Description of Charcoal 3',
+            },
+            {
+                title: 'Charcoal 4',
+                description: 'Description of Charcoal 4',
+            }
+        ]
+    }];
