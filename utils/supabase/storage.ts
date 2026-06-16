@@ -3,7 +3,7 @@ import { supabase } from './supabaseClient';
 const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp|avif)$/i;
 
 export const ARTWORK_BUCKET =
-  process.env.NEXT_PUBLIC_SUPABASE_ARTWORK_BUCKET?.replace(/^["']|["']$/g, '') ??
+  process.env.SUPABASE_ARTWORK_BUCKET?.replace(/^["']|["']$/g, '') ??
   'album-art';
 
 export type BucketImage = {
