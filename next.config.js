@@ -5,7 +5,10 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
-    transpilePackages: ["geist"]
+    transpilePackages: ["geist"],
+    images: {
+        remotePatterns: [new URL('https://dcsmjiyimxsnmarchisx.supabase.co/storage/v1/object/**')],
+    },
 }
 
 export default nextConfig

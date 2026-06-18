@@ -118,6 +118,7 @@ function MorphingDialogTrigger({
       ref={triggerRef}
       layoutId={`dialog-${uniqueId}`}
       className={cn('relative cursor-pointer', className)}
+      suppressHydrationWarning
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       style={style}

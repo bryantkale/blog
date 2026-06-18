@@ -5,7 +5,6 @@ import {
   createContext,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from 'react';
 import { motion, Transition, useMotionValue } from 'motion/react';
@@ -49,8 +48,11 @@ function CarouselProvider({
   const [itemsCount, setItemsCount] = useState<number>(0);
 
   const handleSetIndex = (newIndex: number) => {
-    setIndex(newIndex);
-    onIndexChange?.(newIndex);
+    const maxIndex = Math.max(0, itemsCount - 1);
+    const clampedIndex = Math.min(Math.max(newIndex, 0), maxIndex);
+
+    setIndex(clampedIndex);
+    onIndexChange?.(clampedIndex);
   };
 
   useEffect(() => {
@@ -106,7 +108,7 @@ function Carousel({
       onIndexChange={handleIndexChange}
       disableDrag={disableDrag}
     >
-      <div className={cn('group/hover relative', className)}>
+      <div className={cn('group/hover relative', className)} data-carousel-root>
         <div className='overflow-hidden'>{children}</div>
       </div>
     </CarouselProvider>
@@ -125,6 +127,7 @@ function CarouselNavigation({
   alwaysShow,
 }: CarouselNavigationProps) {
   const { index, setIndex, itemsCount } = useCarousel();
+  const maxIndex = Math.max(0, itemsCount - 1);
 
   return (
     <div
@@ -146,7 +149,7 @@ function CarouselNavigation({
             : 'group-hover/hover:disabled:opacity-40',
           classNameButton
         )}
-        // disabled={index === 0}
+        disabled={index === 0}
         onClick={() => {
           if (index > 0) {
             setIndex(index - 1);
@@ -171,9 +174,9 @@ function CarouselNavigation({
           classNameButton
         )}
         aria-label='Next slide'
-        disabled={index + 1 === itemsCount}
+        disabled={index >= maxIndex}
         onClick={() => {
-          if (index < itemsCount - 1) {
+          if (index < maxIndex) {
             setIndex(index + 1);
           }
         }}
@@ -238,33 +241,9 @@ function CarouselContent({
   transition,
 }: CarouselContentProps) {
   const { index, setIndex, setItemsCount, disableDrag } = useCarousel();
-  const [visibleItemsCount, setVisibleItemsCount] = useState(1);
   const dragX = useMotionValue(0);
-  const containerRef = useRef<HTMLDivElement>(null);
   const itemsLength = Children.count(children);
-
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
-
-    const options = {
-      root: containerRef.current,
-      threshold: 0.5,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      const visibleCount = entries.filter(
-        (entry) => entry.isIntersecting
-      ).length;
-      setVisibleItemsCount(visibleCount);
-    }, options);
-
-    const childNodes = containerRef.current.children;
-    Array.from(childNodes).forEach((child) => observer.observe(child));
-
-    return () => observer.disconnect();
-  }, [children, setItemsCount]);
+  const maxIndex = Math.max(0, itemsLength - 1);
 
   useEffect(() => {
     if (!itemsLength) {
@@ -274,10 +253,16 @@ function CarouselContent({
     setItemsCount(itemsLength);
   }, [itemsLength, setItemsCount]);
 
+  useEffect(() => {
+    if (index > maxIndex) {
+      setIndex(maxIndex);
+    }
+  }, [index, maxIndex, setIndex]);
+
   const onDragEnd = () => {
     const x = dragX.get();
 
-    if (x <= -10 && index < itemsLength - 1) {
+    if (x <= -10 && index < maxIndex) {
       setIndex(index + 1);
     } else if (x >= 10 && index > 0) {
       setIndex(index - 1);
@@ -286,6 +271,7 @@ function CarouselContent({
 
   return (
     <motion.div
+      data-carousel-track
       drag={disableDrag ? false : 'x'}
       dragConstraints={
         disableDrag
@@ -300,7 +286,7 @@ function CarouselContent({
         x: disableDrag ? undefined : dragX,
       }}
       animate={{
-        translateX: `-${index * (100 / visibleItemsCount)}%`,
+        translateX: `-${index * 100}%`,
       }}
       onDragEnd={disableDrag ? undefined : onDragEnd}
       transition={
@@ -316,7 +302,6 @@ function CarouselContent({
         !disableDrag && 'cursor-grab active:cursor-grabbing',
         className
       )}
-      ref={containerRef}
     >
       {children}
     </motion.div>
@@ -331,6 +316,7 @@ export type CarouselItemProps = {
 function CarouselItem({ children, className }: CarouselItemProps) {
   return (
     <motion.div
+      data-carousel-slide
       className={cn(
         'w-full min-w-0 shrink-0 grow-0 overflow-hidden',
         className
