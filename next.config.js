@@ -7,7 +7,7 @@ const nextConfig = {
     },
     transpilePackages: ["geist"],
     images: {
-        remotePatterns: [new URL('https://dcsmjiyimxsnmarchisx.supabase.co/storage/v1/object/**')],
+        remotePatterns: [new URL(process.env.SUPABASE_URL || '')],
     },
 }
 
