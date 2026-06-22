@@ -15,6 +15,9 @@ const navItems = {
   '/artwork': {
     name: 'artwork',
   },
+  '/tomato-test': {
+    name: 'tomato test',
+  },
   '/techExperience': {
     name: 'tech experience',
   },
