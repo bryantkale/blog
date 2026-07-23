@@ -1,5 +1,10 @@
 import { Carousel, CarouselContent, CarouselIndicator, CarouselItem, CarouselNavigation } from "@/components/motion-primitives/carousel";
 import { MorphingDialog, MorphingDialogClose, MorphingDialogContainer, MorphingDialogContent, MorphingDialogImage, MorphingDialogTrigger } from "@/components/motion-primitives/morphing-dialog";
+import PDFViewer from "../PDFViewer/PDFViewer";
+
+function isPdf(url: string) {
+    return /\.pdf($|\?)/i.test(url);
+}
 
 export default function ImageCarousel({ item }) {
     if (!item.images.length) {
@@ -13,6 +18,14 @@ export default function ImageCarousel({ item }) {
                 <CarouselContent>
                     {item.images.map((image, idx) => (
                         <CarouselItem className='p-6' key={idx}>
+                            {isPdf(image.imageUrl) ? (
+                                <div className='rounded-[4px] bg-zinc-100 p-4'>
+                                    {image.title && (
+                                        <p className='mb-2 font-medium'>{image.title}</p>
+                                    )}
+                                    <PDFViewer file={image.imageUrl} maxPages={1} />
+                                </div>
+                            ) : (
                             <MorphingDialog
                                 transition={{
                                     duration: 0.3,
@@ -53,6 +66,7 @@ export default function ImageCarousel({ item }) {
                                     </MorphingDialogClose>
                                 </MorphingDialogContainer>
                             </MorphingDialog>
+                            )}
                         </CarouselItem>
                     ))}
                 </CarouselContent>

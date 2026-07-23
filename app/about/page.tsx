@@ -33,6 +33,9 @@ export default function About() {
                 <p className="mb-4">
                     {`Since then I’ve kept learning new languages and tools. I currently work at Capital One (previously Discover), building customer service tools that help agents support customers more efficiently. I’m looking for a full-time role where I can help a company reach its goals.`}
                 </p>
+                <p className="mb-4">
+                    {`You can find me taking the Introduction to Graphic Design this summer at Pratt College.`}
+                </p>
             </section>
             <p className="mb-5 text-zinc-600 dark:text-zinc-400">
                 You can contact me at{' '}

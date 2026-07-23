@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 
-const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp|avif)$/i;
+const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp|avif|pdf)$/i;
 
 export const ARTWORK_BUCKET =
   process.env.SUPABASE_ARTWORK_BUCKET?.replace(/^["']|["']$/g, '') ??
@@ -22,7 +22,8 @@ export function getPublicImageUrl(
 
 export async function listBucketImages(
   folder = '',
-  bucket: string = ARTWORK_BUCKET
+  bucket: string = ARTWORK_BUCKET,
+  imageExtensions: RegExp = IMAGE_EXTENSIONS
 ): Promise<BucketImage[]> {
   const { data, error } = await supabase.storage.from(bucket).list(folder, {
     limit: 100,
@@ -34,7 +35,7 @@ export async function listBucketImages(
   }
 
   return (data ?? [])
-    .filter((file) => file.id && IMAGE_EXTENSIONS.test(file.name))
+    .filter((file) => file.id && imageExtensions.test(file.name))
     .map((file) => {
       const path = folder ? `${folder}/${file.name}` : file.name;
 
@@ -65,24 +66,24 @@ export type Artwork = {
   }>;
 };
 
-function titleFromFilename(filename: string): string {
+function titleFromFilename(filename: string, imageExtensions: RegExp): string {
   return filename
-    .replace(IMAGE_EXTENSIONS, '')
+    .replace(imageExtensions, '')
     .replace(/[_-]+/g, ' ')
     .trim();
 }
 
 export async function resolveArtworkImages(
-  artwork: Artwork
+  artwork: Artwork,
+  imageExtensions: RegExp
 ): Promise<ArtworkImage[]> {
   if (artwork.folder) {
-    const bucketImages = await listBucketImages(artwork.folder);
-
+    const bucketImages = await listBucketImages(artwork.folder, ARTWORK_BUCKET, imageExtensions);
     return bucketImages.map((image, index) => {
       const metadata = artwork.images[index];
 
       return {
-        title: metadata?.title ?? titleFromFilename(image.name),
+        title: metadata?.title ?? titleFromFilename(image.name, imageExtensions),
         description: metadata?.description ?? '',
         imageUrl: image.url,
       };
@@ -99,12 +100,13 @@ export async function resolveArtworkImages(
 }
 
 export async function resolveArtworkCollection(
-  artworkItems: Artwork[]
+  artworkItems: Artwork[],
+  imageExtensions: RegExp
 ): Promise<Array<Artwork & { images: ArtworkImage[] }>> {
   return Promise.all(
     artworkItems.map(async (item) => ({
       ...item,
-      images: await resolveArtworkImages(item),
+      images: await resolveArtworkImages(item, imageExtensions),
     }))
   );
 }

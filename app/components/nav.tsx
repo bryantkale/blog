@@ -6,17 +6,17 @@ const navItems = {
   '/': {
     name: 'home',
   },
-  '/vinyl': {
-    name: 'vinyl',
-  },
   '/about': {
     name: 'about',
   },
+  '/portfolio': {
+    name: 'portfolio',
+  },
+  '/vinyl': {
+    name: 'vinyl',
+  },
   '/artwork': {
     name: 'artwork',
-  },
-  '/tomato-test': {
-    name: 'tomato test',
   },
   '/techExperience': {
     name: 'tech experience',

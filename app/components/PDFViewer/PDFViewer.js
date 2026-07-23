@@ -1,24 +1,16 @@
 "use client";
+
 import dynamic from "next/dynamic";
 
-// Dynamically import the PDF viewer client component.
 const PDFViewerClient = dynamic(() => import("./PDFViewerClient"), {
     ssr: false,
     loading: () => (
-        <div
-            style={{
-                padding: "2rem",
-                textAlign: "center",
-                fontSize: "1.2rem",
-                color: "#333",
-            }}
-        >
-            Loading PDF Viewer...
-        </div>
+        <div className="py-8 text-center text-zinc-600">Loading PDF viewer...</div>
     ),
 });
 
-const PDFViewer = () => {
-    return <PDFViewerClient />;
+const PDFViewer = ({ file, maxPages }) => {
+    return <PDFViewerClient file={file} maxPages={maxPages} />;
 };
+
 export default PDFViewer;

@@ -27,6 +27,16 @@ export const SOCIAL_LINKS: SocialLink[] = [
     }
 ];
 
+export const portfolioWork: Artwork[] = [
+    {
+        mainTitle: "Intro to Graphic Design Pieces",
+        year: '2026',
+        description: "My final work from Introduction to Graphic Design",
+        folder: "portfolio",
+        images: []
+    },
+]
+
 // Images are loaded from the public album-art Supabase bucket via folder or bucketPath.
 export const artworkItems: Artwork[] = [
     {
