@@ -78,12 +78,17 @@ export type Artwork = {
   description: string;
   folder?: string;
   images: Array<{
+    filename?: string;
     title: string;
     description: string;
     imageUrl?: string;
     bucketPath?: string;
   }>;
 };
+
+function normalizeFilename(filename: string): string {
+  return decodeURIComponent(filename).split('/').pop()?.trim().toLowerCase() ?? '';
+}
 
 function titleFromFilename(filename: string, imageExtensions: RegExp): string {
   return filename
@@ -98,8 +103,16 @@ export async function resolveArtworkImages(
 ): Promise<ArtworkImage[]> {
   if (artwork.folder) {
     const bucketImages = await listBucketImages(artwork.folder, ARTWORK_BUCKET, imageExtensions);
+
+    const metadataByFilename = new Map(
+      artwork.images
+        .filter((image) => image.filename)
+        .map((image) => [normalizeFilename(image.filename as string), image])
+    );
+
     return bucketImages.map((image, index) => {
-      const metadata = artwork.images[index];
+      const metadataFromFilename = metadataByFilename.get(normalizeFilename(image.name));
+      const metadata = metadataFromFilename ?? artwork.images[index];
 
       return {
         title: metadata?.title ?? titleFromFilename(image.name, imageExtensions),

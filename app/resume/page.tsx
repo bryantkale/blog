@@ -5,10 +5,8 @@ export default function Resume() {
             style={{ fontFamily: 'termina, sans-serif' }}
         >
             <section className="space-y-4">
-                <h2 className="text-xl font-bold uppercase tracking-[0.08em]">Experience</h2>
-
                 <div className="space-y-2">
-                    <h3 className="text-base font-semibold">Capital One (Previously Discover)</h3>
+                    <h3 className="text-base font-semibold">Capital One/Discover</h3>
                     <p>Principal Associate Engineer | Remote, New York | Dec 2023 - Present</p>
                     <ul className="list-disc space-y-1 pl-5">
                         <li>Orchestrated the migration of services from Instana to Datadog, optimizing application performance and enhancing the customer experience.</li>
