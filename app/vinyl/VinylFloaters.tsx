@@ -128,10 +128,10 @@ export default function VinylFloaters({ records }: { records: VinylRecord[] }) {
   const shelves = chunkRecords(visibleRecords);
 
   return (
-    <div className="relative left-1/2 h-[82vh] w-[95vw] max-w-6xl -translate-x-1/2 overflow-y-auto overflow-x-hidden rounded-[12px] border border-[#331B1C]/20 bg-[#FFE9E9] px-6 py-8">
-      <div className="sticky top-0 z-20 -mx-6 -mt-8 mb-8 border-b border-[#331B1C]/15 bg-[#FFE9E9]/95 px-6 py-5 backdrop-blur">
+    <div className="relative h-[82vh] w-full max-w-full overflow-y-auto overflow-x-hidden rounded-[12px] border border-[#331B1C]/20 bg-[#FFE9E9] px-4 py-6 sm:px-6 sm:py-8">
+      <div className="sticky top-0 z-20 -mx-4 -mt-6 mb-8 border-b border-[#331B1C]/15 bg-[#FFE9E9]/95 px-4 py-5 backdrop-blur sm:-mx-6 sm:-mt-8 sm:px-6">
         <div className="mb-4 text-center text-xs uppercase tracking-[0.3em] text-[#331B1C]/60">
-          Search my vinyl collection!
+          Search through my home vinyl collection!
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <label className="flex flex-1 flex-col gap-1 text-sm">
@@ -167,7 +167,7 @@ export default function VinylFloaters({ records }: { records: VinylRecord[] }) {
             key={shelfIndex}
             className="relative pb-8"
           >
-            <div className="grid grid-cols-8 gap-x-5 gap-y-6">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 sm:gap-x-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
               {shelfRecords.map((record) => (
                 <button
                   key={record.id}

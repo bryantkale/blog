@@ -53,10 +53,7 @@ export default function RootLayout({
         boxSizing: "border-box",
         minHeight: "100vh",
       }} className="antialiased max-w-5xl mx-4 mt-8 lg:mx-auto">
-        <div className="mb-4 flex justify-end px-2 md:px-0">
-          <ThemeToggle />
-        </div>
-        <main className="mt-6 px-2 md:px-0">
+        <main className="mt-6 p-10 mb-4 px-2 md:px-0">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
             <aside className="md:w-40 md:shrink-0">
               <div className="space-y-4 md:sticky md:top-20">
@@ -65,6 +62,7 @@ export default function RootLayout({
                   <span>Bryant</span>
                 </div>
                 <Navbar />
+                <ThemeToggle />
               </div>
             </aside>
             <section className="min-w-0 flex-1 md:pt-[4.25rem]">

@@ -8,12 +8,6 @@ export default async function Vinyl() {
   return (
     <section className="space-y-4">
       <div className="relative min-h-32 pr-28 sm:pr-40">
-        <div>
-          <h1 className="text-2xl font-semibold">Home Vinyl Collection</h1>
-          <p className="text-sm">
-            Click through my records to see more information about the album.
-          </p>
-        </div>
         <div className="absolute right-0 top-0">
           <SpinningVinyl />
         </div>
