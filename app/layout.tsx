@@ -3,15 +3,15 @@ import type { Metadata } from 'next'
 import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from './components/footer'
-import { FULL_NAME } from './data';
+import ThemeToggle from '@/app/components/ThemeToggle'
 import { GeistPixelSquare } from 'geist/font/pixel';
+import { FIRST_NAME } from './data'
 // Tutorial for black lace border: https://solaria.neocities.org/guides/borderimage/
 
 export const metadata: Metadata = {
   title: {
-    default: FULL_NAME,
-    template: '%s | ' + FULL_NAME,
+    default: FIRST_NAME,
+    template: '%s | ' + FIRST_NAME,
   },
   description: 'This is my portfolio.',
   openGraph: {
@@ -45,21 +45,32 @@ export default function RootLayout({
     <html
       lang="en"
       className={GeistPixelSquare.className}
-      style={{
-        color: '#331B1C',
-        border: '20px solid transparent',
-        borderImage: `url("/blacklacelarge.png") 30 round`,
-        backgroundColor: '#FFE9E9',
-      }}
     >
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/blp1rox.css" />
+      </head>
       <body style={{
         boxSizing: "border-box",
         minHeight: "100vh",
-      }} className="antialiased  max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
-          {children}
-          <Footer />
+      }} className="antialiased max-w-5xl mx-4 mt-8 lg:mx-auto">
+        <div className="mb-4 flex justify-end px-2 md:px-0">
+          <ThemeToggle />
+        </div>
+        <main className="mt-6 px-2 md:px-0">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
+            <aside className="md:w-40 md:shrink-0">
+              <div className="space-y-4 md:sticky md:top-20">
+                <div className="site-brand">
+                  <span style={{ letterSpacing: '0.16em' }}>Caelin</span>
+                  <span>Bryant</span>
+                </div>
+                <Navbar />
+              </div>
+            </aside>
+            <section className="min-w-0 flex-1 md:pt-[4.25rem]">
+              {children}
+            </section>
+          </div>
           <Analytics />
           <SpeedInsights />
         </main>

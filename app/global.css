@@ -1,11 +1,16 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 ::selection {
-  /* background-color: #FFEDD2; */
   color: blue;
 }
 
 :root {
+  --bg: #FECDD4;
+  --fg: #331B1C;
+  --surface: #F7D7E8;
+  --surface-strong: #ECC0D7;
+  --lace-filter: none;
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -17,21 +22,53 @@
   --sh-entity: #e25a1c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-
-  html {
-    color-scheme: dark;
-  }
+html.dark {
+  color-scheme: dark;
+  --bg: #130F14;
+  --fg: #FFF2F8;
+  --surface: #2A202B;
+  --surface-strong: #483748;
+  --lace-filter: invert(1) brightness(1.15);
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
 }
 
 html {
   min-width: 360px;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  border: 20px solid transparent;
+  border-image: url('/blacklacelarge.png') 30 round;
+  pointer-events: none;
+  filter: var(--lace-filter);
+  z-index: 9999;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* Caelin Bryant */
+.site-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--fg);
+  font-family: termina, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  text-transform: uppercase;
 }
 
 .prose .anchor {

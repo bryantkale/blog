@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { hasSupabaseConfig, supabase } from './supabaseClient';
 
 const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp|avif|pdf)$/i;
 
@@ -16,6 +16,21 @@ export function getPublicImageUrl(
   path: string,
   bucket: string = ARTWORK_BUCKET
 ): string {
+  const supabaseBaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL;
+
+  if (!hasSupabaseConfig || !supabase) {
+    if (!supabaseBaseUrl) {
+      return '';
+    }
+
+    const encodedPath = path
+      .split('/')
+      .map((segment) => encodeURIComponent(segment))
+      .join('/');
+
+    return `${supabaseBaseUrl}/storage/v1/object/public/${encodeURIComponent(bucket)}/${encodedPath}`;
+  }
+
   const { data } = supabase.storage.from(bucket).getPublicUrl(path);
   return data.publicUrl;
 }
@@ -25,6 +40,10 @@ export async function listBucketImages(
   bucket: string = ARTWORK_BUCKET,
   imageExtensions: RegExp = IMAGE_EXTENSIONS
 ): Promise<BucketImage[]> {
+  if (!hasSupabaseConfig || !supabase) {
+    return [];
+  }
+
   const { data, error } = await supabase.storage.from(bucket).list(folder, {
     limit: 100,
     sortBy: { column: 'name', order: 'asc' },

@@ -6,23 +6,23 @@ type SocialLink = {
 };
 
 export const EMAIL = 'caelinbryant@gmail.com';
-export const FULL_NAME = 'Caelin Bryant';
+export const FIRST_NAME = 'Caelin';
 
 export const SOCIAL_LINKS: SocialLink[] = [
     {
-        label: 'Github',
+        label: 'GITHUB',
         url: 'https://github.com/bryantkale',
     },
     {
-        label: 'LinkedIn',
+        label: 'LINKEDIN',
         url: 'https://www.linkedin.com/in/caelin-bryant',
     },
     {
-        label: 'Instagram',
+        label: 'INSTAGRAM',
         url: 'https://www.instagram.com/caebryant',
     },
     {
-        label: 'GoodReads',
+        label: 'GOODREADS',
         url: 'https://www.goodreads.com/user/show/154091402',
     }
 ];

@@ -131,7 +131,7 @@ export default function VinylFloaters({ records }: { records: VinylRecord[] }) {
     <div className="relative left-1/2 h-[82vh] w-[95vw] max-w-6xl -translate-x-1/2 overflow-y-auto overflow-x-hidden rounded-[12px] border border-[#331B1C]/20 bg-[#FFE9E9] px-6 py-8">
       <div className="sticky top-0 z-20 -mx-6 -mt-8 mb-8 border-b border-[#331B1C]/15 bg-[#FFE9E9]/95 px-6 py-5 backdrop-blur">
         <div className="mb-4 text-center text-xs uppercase tracking-[0.3em] text-[#331B1C]/60">
-          search the shelves
+          Search my vinyl collection!
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <label className="flex flex-1 flex-col gap-1 text-sm">

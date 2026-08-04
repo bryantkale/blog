@@ -1,9 +1,9 @@
 import { ImageResponse } from 'next/og'
-import { FULL_NAME } from '../data'
+import { FIRST_NAME } from '../data'
 
 export function GET(request: Request) {
   let url = new URL(request.url)
-  let title = url.searchParams.get('title') || FULL_NAME
+  let title = url.searchParams.get('title') || FIRST_NAME
 
   return new ImageResponse(
     (

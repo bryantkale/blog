@@ -18,7 +18,6 @@ export default function ArtworkGallery({
 }) {
   return (
     <div style={{ padding: 'auto' }}>
-      <h1 className="flex mb-4 text-2xl font-semibold">My Art Work</h1>
       {items.map((item, index) => (
         <div
           key={`${item.mainTitle}-${index}`}

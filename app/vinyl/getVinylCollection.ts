@@ -17,6 +17,10 @@ type VinylCollectionRow = {
 };
 
 export async function getVinylCollection(): Promise<VinylRecord[]> {
+  if (!supabase) {
+    return [];
+  }
+
   const { data, error } = await supabase
     .from('VinylCollection')
     .select('id, Album, Artist, artwork_url, musicbrainz_release_id')

@@ -9,7 +9,6 @@ export default async function Portfolio() {
 
     return (
         <div>
-            <h1 className="mb-4 text-2xl font-semibold">Portfolio</h1>
             {collection && (
                 <section className="mb-10">
                     <h2 className="text-xl underline decoration-double">
