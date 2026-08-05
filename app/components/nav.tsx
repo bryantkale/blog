@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'motion/react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navItems = {
   '/': {
@@ -21,9 +22,21 @@ const navItems = {
 }
 
 export function Navbar() {
+  const pathname = usePathname()
+
+  function isActivePath(path: string) {
+    if (path === '/') {
+      return pathname === '/'
+    }
+
+    return pathname === path || pathname.startsWith(`${path}/`)
+  }
+
   return (
-    <nav className="flex flex-col gap-2" aria-label="Primary">
+    <nav className="left-nav flex flex-col gap-2" aria-label="Primary">
       {Object.entries(navItems).map(([path, { name }]) => {
+        const isActive = isActivePath(path)
+
         return (
           <motion.div
             key={path}
@@ -34,7 +47,15 @@ export function Navbar() {
             <Link
               href={path}
               data-id={path}
+              aria-current={isActive ? 'page' : undefined}
+              className="inline-flex items-center gap-2"
             >
+              <span
+                aria-hidden="true"
+                className={`text-black dark:text-white transition-opacity ${isActive ? 'opacity-100' : 'opacity-0'}`}
+              >
+                ★
+              </span>
               {name}
             </Link>
           </motion.div>

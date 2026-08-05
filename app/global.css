@@ -21,7 +21,7 @@
 html.dark {
   color-scheme: dark;
   --bg: #130F14;
-  --fg: #000000;
+  --fg: #FFFFFF;
   --surface: #2A202B;
   --surface-strong: #483748;
   --lace-filter: invert(1) brightness(1.15);

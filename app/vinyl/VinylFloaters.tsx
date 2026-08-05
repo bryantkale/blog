@@ -128,8 +128,8 @@ export default function VinylFloaters({ records }: { records: VinylRecord[] }) {
   const shelves = chunkRecords(visibleRecords);
 
   return (
-    <div className="relative h-[82vh] w-full max-w-full overflow-y-auto overflow-x-hidden rounded-[12px] border border-[#331B1C]/20 bg-[#FFE9E9] px-4 py-6 sm:px-6 sm:py-8">
-      <div className="sticky top-0 z-20 -mx-4 -mt-6 mb-8 border-b border-[#331B1C]/15 bg-[#FFE9E9]/95 px-4 py-5 backdrop-blur sm:-mx-6 sm:-mt-8 sm:px-6">
+    <div className="relative h-[82vh] w-full max-w-full overflow-y-auto overflow-x-hidden rounded-[12px] border border-[#331B1C]/20 bg-[#FFE9E9]">
+      <div className="sticky top-0 z-30 border-b border-[#331B1C]/15 bg-[#FFE9E9] px-4 py-5 sm:px-6">
         <div className="mb-4 text-center text-xs uppercase tracking-[0.3em] text-[#331B1C]/60">
           Search through my home vinyl collection!
         </div>
@@ -161,7 +161,7 @@ export default function VinylFloaters({ records }: { records: VinylRecord[] }) {
         </p>
       </div>
 
-      <div className="space-y-12">
+      <div className="space-y-12 px-4 py-6 sm:px-6 sm:py-8">
         {shelves.length ? shelves.map((shelfRecords, shelfIndex) => (
           <div
             key={shelfIndex}
