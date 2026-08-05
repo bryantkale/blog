@@ -4,7 +4,6 @@ import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import ThemeToggle from '@/app/components/ThemeToggle'
-import { GeistPixelSquare } from 'geist/font/pixel';
 import { FIRST_NAME } from './data'
 // Tutorial for black lace border: https://solaria.neocities.org/guides/borderimage/
 
@@ -44,7 +43,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={GeistPixelSquare.className}
     >
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/blp1rox.css" />
@@ -53,7 +51,7 @@ export default function RootLayout({
         boxSizing: "border-box",
         minHeight: "100vh",
       }} className="antialiased max-w-5xl mx-4 mt-8 lg:mx-auto">
-        <main className="mt-6 p-10 mb-4 px-2 md:px-0">
+        <main className="mt-6 mb-4 rounded-[12px] bg-[var(--bg)] p-10 px-2 md:px-0">
           <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
             <aside className="md:w-40 md:shrink-0">
               <div className="space-y-4 md:sticky md:top-20">
