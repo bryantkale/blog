@@ -71,11 +71,45 @@ export const portfolioWork: Artwork[] = [
 // Images are loaded from the public album-art Supabase bucket via folder or bucketPath.
 export const artworkItems: Artwork[] = [
     {
+        mainTitle: "Sketches from old black book no.6",
+        year: '?',
+        description: '',
+        folder: 'Sketches5',
+        images: []
+    },
+    {
+        mainTitle: "Sketches from old black book no.5",
+        year: '?',
+        description: '',
+        folder: 'Sketches4',
+        images: []
+    },
+    {
+        mainTitle: "Sketches from old black book no.4",
+        year: '?',
+        description: '',
+        folder: 'Sketches3',
+        images: []
+    },
+    {
+        mainTitle: "Sketches from old black book no.3",
+        year: '?',
+        description: '',
+        folder: 'Sketches2',
+        images: []
+    },
+    {
+        mainTitle: "Sketches from old black book no.2",
+        year: '?',
+        description: 'I want to start uploading more of my sketches from over the years as I begin to understand who I am as an artist.',
+        folder: 'Sketches1',
+        images: []
+    },
+    {
         mainTitle: "Sketches from old black book no.1",
-        year: '2020-2021',
-        description: 'Here are some pieces from my sketchbook. I plan on working them into something bigger, ' +
-            'but for now, I want to display them here.',
-        folder: 'newer',
+        year: '2020-??',
+        description: 'Drawings of my dog Katie over the years.',
+        folder: 'Katie',
         images: []
     },
     {

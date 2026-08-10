@@ -50,22 +50,24 @@ export default function RootLayout({
       <body style={{
         boxSizing: "border-box",
         minHeight: "100vh",
-      }} className="antialiased max-w-5xl mx-4 mt-8 lg:mx-auto">
-        <main className="mt-6 mb-4 rounded-[12px] bg-[var(--bg)] p-10 px-2 md:px-0">
-          <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
-            <aside className="md:w-40 md:shrink-0">
-              <div className="space-y-4 md:sticky md:top-20">
-                <div className="site-brand">
-                  <span style={{ letterSpacing: '0.16em' }}>Caelin</span>
-                  <span>Bryant</span>
+      }} className="antialiased flex flex-col">
+        <main className="flex-1 flex items-center justify-center px-4">
+          <div className="w-full max-w-5xl rounded-[12px] bg-[var(--bg)] p-10 px-2 md:px-0">
+            <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
+              <aside className="md:w-40 md:shrink-0">
+                <div className="space-y-4">
+                  <div className="site-brand">
+                    <span style={{ letterSpacing: '0.16em' }}>Caelin</span>
+                    <span>Bryant</span>
+                  </div>
+                  <Navbar />
+                  <ThemeToggle />
                 </div>
-                <Navbar />
-                <ThemeToggle />
-              </div>
-            </aside>
-            <section className="min-w-0 flex-1 md:pt-[4.25rem]">
-              {children}
-            </section>
+              </aside>
+              <section className="min-w-0 flex-1">
+                {children}
+              </section>
+            </div>
           </div>
           <Analytics />
           <SpeedInsights />
