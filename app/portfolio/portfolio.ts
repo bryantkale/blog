@@ -12,6 +12,7 @@ export type PortfolioPiece = {
     collectionTitle: string;
     collectionYear: string;
     collectionDescription: string;
+    toolsUsed?: string;
 };
 
 export function isPdf(url: string) {
@@ -36,6 +37,7 @@ export async function getPortfolioPieces(): Promise<PortfolioPiece[]> {
             collectionTitle: item.mainTitle,
             collectionYear: item.year,
             collectionDescription: item.description,
+            toolsUsed: image.toolsUsed || '',
         }))
     );
 }

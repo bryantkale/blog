@@ -36,6 +36,7 @@ export const portfolioWork: Artwork[] = [
         images: [
             {
                 filename: 'booklet-spread.jpg',
+                toolsUsed: 'Adobe InDesign',
                 title: 'Booklet Spread',
                 description: 'Here, I\'m exploring typography and style in booklet.' +
                     'This was more about studying typography and style to create visual continuity.' +
@@ -46,12 +47,14 @@ export const portfolioWork: Artwork[] = [
             },
             {
                 filename: 'branding-spread.jpg',
+                toolsUsed: 'Adobe InDesign, Adobe Photoshop, Adobe Illustrator',
                 title: 'Branding Spread',
                 description: 'Tasked with building a brand, I decided to go with an idea that was personal to me. My fiance and I have always dreamed of owning a cafe where people can sit and enjoy a good cup of coffee.' +
                     'I wanted to create a brand that was warm and inviting, with a focus on community and connection. The colors and typography were chosen to reflect this, with earthy tones and a friendly, approachable font. The logo was designed to be simple yet memorable, with a focus on the name of the cafe and the idea of bringing people together over a cup of coffee.',
             },
             {
                 filename: 'poster-exploration.jpg',
+                toolsUsed: 'Adobe InDesign, Adobe Photoshop',
                 title: 'Poster Exploration',
                 description: 'Inspired by the 6 word project, this project was about creating visual communication' +
                     'through typographic systems and hierarchy. I chose something that was personal to me to build off of.' +
@@ -115,14 +118,18 @@ export const artworkItems: Artwork[] = [
     {
         mainTitle: "Vivero Project",
         year: "2017",
-        description: "This covers some of the work I did for Vivero Swag.",
+        description: "This covers some of the work I did for Vivero Swag. I don't have the full exploration" +
+            " of ideas readily avaliable, but this shows me exploring brand design for the first time before I even" +
+            " knew what that was.",
         folder: "vivero",
+        medium: "Digital",
         images: []
     },
     {
         mainTitle: "Welding Project",
         year: "2016",
         description: "",
+        medium: "Metal wire, fake flowers",
         folder: "welding",
         images: []
     },
@@ -130,8 +137,10 @@ export const artworkItems: Artwork[] = [
         mainTitle: "Wood Project",
         year: "2016",
         description: "Close your eyes and feel the bumps and curves of a tree. It flow is organic and nothing repeats in" +
-            " the same way. I wanted to depict that feeling with multiple pieces of wood stack and sanded.",
+            " the same way. I wanted to depict that feeling with multiple pieces of wood stack and sanded." +
+            " Given a chance to explore woodworking, I wanted to pile on many pieces of wood and sand them down to create a smooth surface that felt organic and natural. I wanted to create a piece that felt like it was alive and growing, like a tree.",
         folder: "wood",
+        medium: "Wood",
         images: []
     },
     {
@@ -140,6 +149,7 @@ export const artworkItems: Artwork[] = [
         description: 'Inspired by Henry Moore’s, “Reclining Figure”, I wanted to intimidate the audience with ' +
             'height and ethereal flow as wind moves through the the piece.',
         folder: 'paper-art',
+        medium: 'Paper',
         images: [{
             title: 'Paper 1',
             description: 'Description of Paper 1',
@@ -162,6 +172,7 @@ export const artworkItems: Artwork[] = [
         year: '2017',
         description: 'Inspired by found materials from CERA (Conard Environmental Research Area), we focus on life after death.',
         folder: 'return',
+        medium: 'Dirt, Gold sharpie',
         images: [{
             title: 'Paper 1',
             description: 'Description of Paper 1',
@@ -189,6 +200,7 @@ export const artworkItems: Artwork[] = [
         description: 'Inspired by Jenny Saville\s, "Other and Children (After the Leonardo Cartoon)" , we focus on capturing the motion' +
             'of a cat being held.',
         folder: 'charcoal',
+        medium: 'Charcoal',
         images: [
             {
                 title: 'Charcoal 1',

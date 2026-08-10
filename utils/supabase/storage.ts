@@ -77,9 +77,11 @@ export type Artwork = {
   year: string;
   description: string;
   folder?: string;
+  medium?: string;
   images: Array<{
     filename?: string;
     title: string;
+    toolsUsed?: string;
     description: string;
     imageUrl?: string;
     bucketPath?: string;
@@ -118,6 +120,7 @@ export async function resolveArtworkImages(
         title: metadata?.title ?? titleFromFilename(image.name, imageExtensions),
         description: metadata?.description ?? '',
         imageUrl: image.url,
+        toolsUsed: metadata?.toolsUsed ?? '',
       };
     });
   }
@@ -128,6 +131,7 @@ export async function resolveArtworkImages(
     imageUrl: image.bucketPath
       ? getPublicImageUrl(image.bucketPath)
       : (image.imageUrl ?? ''),
+    toolsUsed: image.toolsUsed ?? '',
   }));
 }
 

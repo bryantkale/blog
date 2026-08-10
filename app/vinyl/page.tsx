@@ -12,6 +12,9 @@ export default async function Vinyl() {
           <SpinningVinyl />
         </div>
       </div>
+      <div>I wanted to create a digital catalog of my vinyl collection at home. I will always know what is on my shelf before I buy something new.</div>
+      <div>This project helped me understand how to build a database and incorporate it into a web application.</div>
+      <div>I found out how difficult it is to work with different music APIs and integrating them into a cohesive system.</div>
       <VinylFloaters records={records} />
     </section>
   );

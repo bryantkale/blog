@@ -12,6 +12,7 @@ type ArtworkGalleryItem = {
   mainTitle: string;
   year: string;
   description: string;
+  medium?: string;
   images: ArtworkImage[];
 };
 
@@ -64,6 +65,9 @@ function ArtworkFolderSection({
         className="max-w-none"
       >
         <p className="mt-2 mb-6 text-sm dark:text-white">{item.description}</p>
+        {item.medium && (
+          <p className="mt-2 mb-6 text-sm dark:text-white">Medium: {item.medium}</p>
+        )}
 
         {activeImage ? (
           <div className="relative rounded-[10px] border border-[#331B1C]/15 bg-white/70 p-3 dark:border-white/10 dark:bg-white/5">
