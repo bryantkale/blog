@@ -19,6 +19,10 @@ const navItems = {
   '/resume': {
     name: 'RESUME',
   },
+  'https://hotdognights.caelin.io/': {
+    name: 'Hot Dog Log',
+  },
+
 }
 
 export function Navbar() {
