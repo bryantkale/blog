@@ -8,6 +8,16 @@ type Metadata = {
   image?: string
 }
 
+export type BlogPost = {
+  title: string
+  publishedAt: string
+  summary: string
+  url: string
+  source: 'local' | 'pckt'
+}
+
+const PCKT_BLOG_FEED_URL = 'https://pckt.blog/b/caelin/feed'
+
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   let match = frontmatterRegex.exec(fileContent)
@@ -27,6 +37,10 @@ function parseFrontmatter(fileContent: string) {
 }
 
 function getMDXFiles(dir) {
+  if (!fs.existsSync(dir)) {
+    return []
+  }
+
   return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
 }
 
@@ -51,6 +65,78 @@ function getMDXData(dir) {
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
+}
+
+function stripCdata(value: string) {
+  return value.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '').trim()
+}
+
+function decodeXmlEntities(value: string) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+}
+
+function readXmlTag(block: string, tagName: string) {
+  let match = block.match(new RegExp(`<${tagName}>([\\s\\S]*?)</${tagName}>`))
+
+  if (!match) {
+    return ''
+  }
+
+  return decodeXmlEntities(stripCdata(match[1]).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())
+}
+
+function getLocalBlogPosts(): BlogPost[] {
+  return getBlogPosts().map((post) => ({
+    title: post.metadata.title,
+    publishedAt: post.metadata.publishedAt,
+    summary: post.metadata.summary,
+    url: `/blog/${post.slug}`,
+    source: 'local',
+  }))
+}
+
+function parsePcktFeed(feedXml: string): BlogPost[] {
+  let items = feedXml.match(/<item>([\s\S]*?)<\/item>/g) ?? []
+
+  return items
+    .map((item) => ({
+      title: readXmlTag(item, 'title') || 'Untitled post',
+      publishedAt: readXmlTag(item, 'pubDate'),
+      summary: readXmlTag(item, 'description'),
+      url: readXmlTag(item, 'link'),
+      source: 'pckt' as const,
+    }))
+    .filter((post) => post.url)
+}
+
+export async function getPcktBlogPosts() {
+  try {
+    let response = await fetch(PCKT_BLOG_FEED_URL, {
+      next: { revalidate: 900 },
+    })
+
+    if (!response.ok) {
+      return []
+    }
+
+    let feedXml = await response.text()
+    return parsePcktFeed(feedXml)
+  } catch {
+    return []
+  }
+}
+
+export async function getAllBlogPosts() {
+  let [pcktPosts] = await Promise.all([getPcktBlogPosts()])
+
+  return [...pcktPosts, ...getLocalBlogPosts()].sort((firstPost, secondPost) => {
+    return new Date(secondPost.publishedAt).getTime() - new Date(firstPost.publishedAt).getTime()
+  })
 }
 
 export function formatDate(date: string, includeRelative = false) {

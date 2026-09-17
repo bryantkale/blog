@@ -1,8 +1,8 @@
-"use client"
-import { motion } from "motion/react"
+import Link from 'next/link'
 import { EMAIL, FIRST_NAME, SOCIAL_LINKS } from './data'
 import { MagneticSocialLink } from './components/MagneticSocialLink/MagneticSocialLink'
 import FolderContainer from './components/folderContainer/FolderContainer'
+import { formatDate, getAllBlogPosts } from './blog/utils'
 
 const LIKES = [
   'Cortados',
@@ -22,9 +22,11 @@ const DISLIKES = [
   'Yankees',
 ]
 
-export default function Page() {
+export default async function Page() {
+  const [latestPost] = await getAllBlogPosts()
+
   return (
-    <motion.main animate="visible">
+    <main>
       <FolderContainer label="Home">
         <section>
           <p className="mb-4">
@@ -43,30 +45,39 @@ export default function Page() {
             {EMAIL}
           </a>
         </p>
-        <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:gap-8">
-          <div>
-            <p className="mb-2 text-sm font-medium uppercase tracking-wide">Likes</p>
-            <ul className="space-y-1 text-sm">
-              {LIKES.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span>🙂</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+        <h1>Blog Posts</h1>
+        <section className="mb-6 rounded-xl border border-black/10 bg-white/30 p-4 dark:border-white/10 dark:bg-black/10">
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <p className="text-sm font-medium uppercase tracking-wide">Latest Writing</p>
+            <Link className="text-xs uppercase tracking-[0.14em] underline-offset-4 hover:underline" href="/blog">
+              View all
+            </Link>
           </div>
-          <div>
-            <p className="mb-2 text-sm font-medium uppercase tracking-wide">Dislikes</p>
-            <ul className="space-y-1 text-sm">
-              {DISLIKES.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span>🙁</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+          {latestPost ? (
+            <div>
+              <div className="mb-2 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.14em] opacity-75">
+                <span>{latestPost.source === 'pckt' ? 'pckt.blog' : 'local'}</span>
+                <span aria-hidden="true">•</span>
+                <time dateTime={latestPost.publishedAt}>{formatDate(latestPost.publishedAt, true)}</time>
+              </div>
+              <h2 className="text-base font-semibold uppercase tracking-[0.08em]">
+                <Link
+                  className="underline-offset-4 hover:underline"
+                  href={latestPost.url}
+                  target={latestPost.source === 'pckt' ? '_blank' : undefined}
+                  rel={latestPost.source === 'pckt' ? 'noreferrer' : undefined}
+                >
+                  {latestPost.title}
+                </Link>
+              </h2>
+              {latestPost.summary ? (
+                <p className="mt-2 text-sm leading-6 opacity-85">{latestPost.summary}</p>
+              ) : null}
+            </div>
+          ) : (
+            <p className="text-sm opacity-75">No writing is available right now.</p>
+          )}
+        </section>
         <div className="flex flex-wrap items-center gap-3">
           {SOCIAL_LINKS.map((link) => (
             <MagneticSocialLink key={link.label} link={link.url}>
@@ -75,6 +86,6 @@ export default function Page() {
           ))}
         </div>
       </FolderContainer>
-    </motion.main>
+    </main>
   )
 }

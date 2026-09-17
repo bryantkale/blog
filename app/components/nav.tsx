@@ -7,6 +7,9 @@ const navItems = {
   '/': {
     name: 'HOME',
   },
+  '/blog': {
+    name: 'BLOG',
+  },
   '/portfolio': {
     name: 'PORTFOLIO',
   },
@@ -22,7 +25,6 @@ const navItems = {
   'https://hotdognights.caelin.io/': {
     name: 'Hot Dog Log',
   },
-
 }
 
 export function Navbar() {
