@@ -1,32 +1,28 @@
+import { notFound } from "next/navigation";
 import { getPortfolioPieces } from "./portfolio";
-import PortfolioFolderCarousel from "./PortfolioFolderCarousel";
+
+export const metadata = { title: "Portfolio" };
 
 export default async function Portfolio() {
     const pieces = await getPortfolioPieces();
+    const pdf = pieces.find((piece) => piece.isPdf);
 
-    const sectionsByKey = new Map<string, {
-        title: string;
-        year: string;
-        description: string;
-        pieces: typeof pieces;
-    }>();
+    if (!pdf) notFound();
 
-    pieces.forEach((piece) => {
-        const sectionKey = `${piece.collectionTitle}::${piece.collectionYear}`;
-        const existing = sectionsByKey.get(sectionKey);
-
-        if (existing) {
-            existing.pieces.push(piece);
-            return;
-        }
-
-        sectionsByKey.set(sectionKey, {
-            title: piece.collectionTitle,
-            year: piece.collectionYear,
-            description: piece.collectionDescription,
-            pieces: [piece],
-        });
-    });
-
-    return <PortfolioFolderCarousel sections={Array.from(sectionsByKey.values())} />;
+    // Fixed overlay covers the root layout's sidebar so the PDF fills the viewport.
+    return (
+        <iframe
+            src={pdf.imageUrl}
+            title={pdf.title}
+            style={{
+                position: "fixed",
+                inset: 0,
+                width: "100vw",
+                height: "100vh",
+                border: 0,
+                zIndex: 50,
+                background: "#fff",
+            }}
+        />
+    );
 }
