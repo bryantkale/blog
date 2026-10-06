@@ -37,7 +37,7 @@ export default async function PortfolioPiecePage({
                 </p>
                 {piece.description && <p className="mb-8">{piece.description}</p>}
                 {piece.isPdf ? (
-                    <PDFViewer file={piece.imageUrl} maxPages={10} />
+                    <PDFViewer file={piece.imageUrl} maxPages={20} />
                 ) : (
                     <Image
                         src={piece.imageUrl}
