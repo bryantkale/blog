@@ -11,18 +11,22 @@ export default async function Portfolio() {
 
     // Fixed overlay covers the root layout's sidebar so the PDF fills the viewport.
     return (
-        <iframe
-            src={pdf.imageUrl}
-            title={pdf.title}
-            style={{
-                position: "fixed",
-                inset: 0,
-                width: "100vw",
-                height: "100vh",
-                border: 0,
-                zIndex: 50,
-                background: "#fff",
-            }}
-        />
+        <>
+            {/* The lace border overlay would cover the PDF viewer's toolbar. */}
+            <style>{`html::before { display: none; }`}</style>
+            <iframe
+                src={pdf.imageUrl}
+                title={pdf.title}
+                style={{
+                    position: "fixed",
+                    inset: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    border: 0,
+                    zIndex: 50,
+                    background: "#fff",
+                }}
+            />
+        </>
     );
 }
