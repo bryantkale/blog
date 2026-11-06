@@ -23,9 +23,13 @@ export default function ArtworkGallery({
 }: {
   items: ArtworkGalleryItem[];
 }) {
+  const sortedItems = [...items].sort(
+    (first, second) => Number(second.year) - Number(first.year),
+  );
+
   return (
     <div className="space-y-0">
-      {items.map((item, index) => (
+      {sortedItems.map((item, index) => (
         <ArtworkFolderSection key={`${item.mainTitle}-${index}`} item={item} index={index} />
       ))}
     </div>

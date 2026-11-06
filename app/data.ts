@@ -48,45 +48,57 @@ export const portfolioWork: Artwork[] = [
 // Images are loaded from the public album-art Supabase bucket via folder or bucketPath.
 export const artworkItems: Artwork[] = [
     {
-        mainTitle: "Sketches from old black book no.6",
-        year: '?',
-        description: '',
-        folder: 'Sketches5',
+        mainTitle: "Guts",
+        year: "2018",
+        description: "I took the most underrepresented organs in art and created something that thought was beautiful. "
+            + "For this piece, I used plaster, plastic bags, string and acrylic paint. I filled long plastic bag tubes with"
+            + "plaster and molded them in order to create something similar to the small and large intestines. In order to the beautiful "
+            + "ridges that intestines usually have, I used string and tied knots all around the plastic bag until it was solid. ",
+        folder: "guts",
+        medium: "Plaster, String, Acrylic Paint, plastic bags",
         images: []
     },
     {
-        mainTitle: "Sketches from old black book no.5",
-        year: '?',
-        description: '',
-        folder: 'Sketches4',
+        mainTitle: "Mounted",
+        year: "2018",
+        description: "The hands are very informative and you can show a lot of emotion with using gestures. "
+            + "Typically, when communicating, people use both of their hands to express themselves, but I thought that "
+            + "it would be interesting to try to tell a story just using my right hand as a cast for all 3 mounted hands",
+        folder: "Mounted",
+        medium: "Plaster, Red wax, Wood, Nails",
         images: []
     },
     {
-        mainTitle: "Sketches from old black book no.4",
-        year: '?',
-        description: '',
-        folder: 'Sketches3',
+        mainTitle: "444",
+        year: "2018",
+        description: "As humans, we show a lot of expression using our eyes and eyebrows, but with this piece, I didn’t "
+            + "want to give the viewer that joy of understanding what I was feeling. I decided to just show my face from the bridge "
+            + "of my nose to my chin in an effort to show expression in an uncommon way. Though they were just half busts of my face, I "
+            + "painted them so that the top 3 busts were all a vibrant red and the bottom half bust was a subtle mustard color. For me, this image is akin to an explanation point.",
+        medium: "Plaster, Acrylic Paint, Wood, Nails",
+        folder: "444",
         images: []
     },
     {
-        mainTitle: "Sketches from old black book no.3",
-        year: '?',
-        description: '',
-        folder: 'Sketches2',
+        mainTitle: "Nails Project",
+        year: "2018",
+        description: "At the end I would say that it is a piece on human behavior. "
+            + "I know a lot of women who go to the nail salon to get their hands and feet polished; I’m one of them. "
+            + "I get long nail extensions because I love how they make me feel. Long painted claws. It makes scratching my scalp a lot easier. "
+            + "When you take said nails off after 2-3 weeks, your nails underneath, for the most part, are ruined by the glue and wear and tear. "
+            + "My nails are always ruined after I get them, but I continue to get them because they make me look badass. After you take your fake nails off, the fake nails pull at your real nails and you’re "
+            + "left with weak, brittle nails.",
+        folder: "nails",
+        medium: "Charcoal",
         images: []
     },
     {
-        mainTitle: "Sketches from old black book no.2",
-        year: '?',
-        description: 'I want to start uploading more of my sketches from over the years as I begin to understand who I am as an artist.',
-        folder: 'Sketches1',
-        images: []
-    },
-    {
-        mainTitle: "Sketches from old black book no.1",
-        year: '2020-??',
-        description: 'Drawings of my dog Katie over the years.',
-        folder: 'Katie',
+        mainTitle: "Casting Project",
+        year: "2016",
+        description: "An artist that really inspires me is Kiki Smith. She works with the human body, whether it be drawing a human body interacting with something else or creating a tangible sculpture."
+            + "Inspired, I was able to successfully combine both my interest in Kiki Smith and my identity as a queer woman of color on this campus. I wanted to create something that symbolizes who I am as a black person and as a female presenting woman. In my piece, I completely worked with direct casting.",
+        folder: "casting",
+        medium: "Plaster",
         images: []
     },
     {
