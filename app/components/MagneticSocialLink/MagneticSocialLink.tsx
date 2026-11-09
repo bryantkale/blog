@@ -146,7 +146,7 @@ export function MagneticSocialLink({
 
     return (
         <span
-            className="relative inline-block"
+            className="relative inline-block w-full sm:w-auto"
             style={{
                 filter: "drop-shadow(2px 0 0 #111) drop-shadow(-2px 0 0 #111) drop-shadow(0 2px 0 #111) drop-shadow(0 -2px 0 #111) drop-shadow(4px 5px 0 #111)",
             }}
@@ -157,7 +157,7 @@ export function MagneticSocialLink({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={burst}
-                className="block rounded-full px-[30px] py-[14px] text-[15px] leading-none font-bold tracking-[0.08em] text-[#111] no-underline uppercase [touch-action:manipulation] focus-visible:outline focus-visible:outline-3 focus-visible:outline-dashed focus-visible:outline-offset-[6px] focus-visible:outline-[#111]"
+                className="block rounded-full px-[30px] py-[14px] text-center text-[15px] leading-none font-bold tracking-[0.08em] text-[#111] no-underline uppercase [touch-action:manipulation] focus-visible:outline focus-visible:outline-3 focus-visible:outline-dashed focus-visible:outline-offset-[6px] focus-visible:outline-[#111]"
                 style={{ backgroundColor: color, clipPath: "inset(0 round 999px)" }}
             >
                 {children}
