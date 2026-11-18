@@ -115,20 +115,16 @@ function parsePcktFeed(feedXml: string): BlogPost[] {
 }
 
 export async function getPcktBlogPosts() {
-  try {
-    let response = await fetch(PCKT_BLOG_FEED_URL, {
-      next: { revalidate: 900 },
-    })
+  let response = await fetch(PCKT_BLOG_FEED_URL, {
+    next: { revalidate: 900 },
+  })
 
-    if (!response.ok) {
-      return []
-    }
-
-    let feedXml = await response.text()
-    return parsePcktFeed(feedXml)
-  } catch {
-    return []
+  if (!response.ok) {
+    throw new Error(`Could not load pckt.blog feed (HTTP ${response.status}).`)
   }
+
+  let feedXml = await response.text()
+  return parsePcktFeed(feedXml)
 }
 
 export async function getAllBlogPosts() {

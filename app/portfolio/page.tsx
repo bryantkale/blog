@@ -1,9 +1,18 @@
 import { notFound } from "next/navigation";
+import LoadingBoundary from "../components/LoadingBoundary";
 import { getPortfolioPieces } from "./portfolio";
 
 export const metadata = { title: "Portfolio" };
 
-export default async function Portfolio() {
+export default function Portfolio() {
+    return (
+        <LoadingBoundary label="portfolio">
+            <PortfolioContent />
+        </LoadingBoundary>
+    );
+}
+
+async function PortfolioContent() {
     const pieces = await getPortfolioPieces();
     const pdf = pieces.find((piece) => piece.isPdf);
 

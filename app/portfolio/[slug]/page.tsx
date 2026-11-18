@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PDFViewer from "../../components/PDFViewer/PDFViewer";
+import LoadingBoundary from "../../components/LoadingBoundary";
 import FolderContainer from "../../components/folderContainer/FolderContainer";
 import { getPortfolioPiece, getPortfolioPieces } from "../portfolio";
 
@@ -10,7 +11,19 @@ export async function generateStaticParams() {
     return pieces.map((piece) => ({ slug: piece.slug }));
 }
 
-export default async function PortfolioPiecePage({
+export default function PortfolioPiecePage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    return (
+        <LoadingBoundary label="portfolio piece">
+            <PortfolioPieceContent params={params} />
+        </LoadingBoundary>
+    );
+}
+
+async function PortfolioPieceContent({
     params,
 }: {
     params: Promise<{ slug: string }>;

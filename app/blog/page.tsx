@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import LoadingBoundary from '@/app/components/LoadingBoundary'
 import FolderContainer from '@/app/components/folderContainer/FolderContainer'
 import { formatDate, getAllBlogPosts } from './utils'
 
@@ -8,7 +9,15 @@ export const metadata: Metadata = {
     description: 'Writing pulled in from pckt.blog.',
 }
 
-export default async function BlogPage() {
+export default function BlogPage() {
+    return (
+        <LoadingBoundary label="blog posts">
+            <BlogContent />
+        </LoadingBoundary>
+    )
+}
+
+async function BlogContent() {
     const posts = await getAllBlogPosts()
 
     return (

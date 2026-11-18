@@ -4,19 +4,19 @@ import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import ThemeToggle from '@/app/components/ThemeToggle'
-import { FIRST_NAME } from './data'
+import { FIRST_NAME, LAST_NAME, } from './data'
 // Tutorial for black lace border: https://solaria.neocities.org/guides/borderimage/
 
 export const metadata: Metadata = {
   title: {
-    default: FIRST_NAME,
+    default: `${FIRST_NAME} ${LAST_NAME}`,
     template: '%s | ' + FIRST_NAME,
   },
-  description: 'This is my portfolio.',
+  description: 'This is my personal blog!',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
-    siteName: 'My Portfolio',
+    title: 'My Personal Blog',
+    description: 'This is my personal blod.',
+    siteName: 'My Personal Blog',
     locale: 'en_US',
     type: 'website',
   },
@@ -46,6 +46,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/blp1rox.css" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body style={{
         boxSizing: "border-box",

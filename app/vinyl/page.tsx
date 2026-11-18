@@ -1,8 +1,17 @@
 import SpinningVinyl from './SpinningVinyl';
 import VinylFloaters from './VinylFloaters';
+import LoadingBoundary from '../components/LoadingBoundary';
 import { getVinylCollection } from './getVinylCollection';
 
-export default async function Vinyl() {
+export default function Vinyl() {
+  return (
+    <LoadingBoundary label="vinyl collection">
+      <VinylContent />
+    </LoadingBoundary>
+  );
+}
+
+async function VinylContent() {
   const records = await getVinylCollection();
 
   return (

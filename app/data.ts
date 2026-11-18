@@ -7,6 +7,7 @@ type SocialLink = {
 
 export const EMAIL = 'caelinbryant@gmail.com';
 export const FIRST_NAME = 'Caelin';
+export const LAST_NAME = 'Bryant';
 
 export const SOCIAL_LINKS: SocialLink[] = [
     {
